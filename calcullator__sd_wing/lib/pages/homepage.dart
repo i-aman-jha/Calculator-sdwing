@@ -19,17 +19,17 @@ class _HomepageState extends State<Homepage> {
 
   Future<void> evaluate(String input) async {
     try {
-      url = 'http://192.168.29.92:5000/evaluate?query=$input';
+      url = 'https://calculator-flask-app-wvii.onrender.com/evaluate?query=$input';
       Data = await Getdata(url);
       var DecodedData = json.decode(Data);
       output = DecodedData['result'].toString();
-          // print(output);
+          print(output);
     } 
     catch (e) {
       setState(() {
         output = "Error";
-        // output = "Error: $e";
-        // print(output);
+        output = "Error: $e";
+        print(output);
       });
     }
 }

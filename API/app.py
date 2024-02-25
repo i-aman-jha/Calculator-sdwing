@@ -4,6 +4,10 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+@app.route('/')
+def Calculator():
+    return "This is a flask app for calculation. Get answer of query by typing expression in url for example |https://calculator-flask-app-wvii.onrender.com/evaluate?query=your expression|"
+
 @app.route('/evaluate', methods=['GET'])
 def evaluate():
     query = str(request.args['query'])
@@ -19,5 +23,5 @@ def evaluate():
         return jsonify({'error': str(e)}), 400
 
 if __name__ == "__main__":
-    app.run(host='192.168.29.92', port=5000, debug=True)
+    app.run(debug=True)
 
